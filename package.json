@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/pravets/nodejs-discord-voicemassages/issues"
   },
-  "homepage": "https://github.com/pravets/nodejs-discord-voicemassages#readme"
+  "homepage": "https://github.com/pravets/nodejs-discord-voicemassages#readme",
+  "dependencies": {
+    "@suldashi/lame": "^1.2.5",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0"
+  }
 }
