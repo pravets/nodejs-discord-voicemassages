@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-discord-voicemessages",
+  "version": "1.0.0",
+  "description": "Bot to record a voice messages in the Discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pravets/nodejs-discord-voicemassages.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "voicemessages",
+    "voice"
+  ],
+  "author": "Iosif Pravets",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pravets/nodejs-discord-voicemassages/issues"
+  },
+  "homepage": "https://github.com/pravets/nodejs-discord-voicemassages#readme"
+}
