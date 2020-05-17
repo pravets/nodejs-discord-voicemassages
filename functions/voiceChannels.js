@@ -1,4 +1,5 @@
 const Guild = require('../models/Guild');
+const Discord = require('discord.js');
 const lame = require('@suldashi/lame');
 const fs = require('fs');
 
@@ -42,8 +43,33 @@ async function onUserSpeaking(user, speaking) {
 
 
 
-module.exports.create = async(client, member, guild) => {
-    result = await guild.channels.create(`VoiceMsg-${member.id}`, { type: "voice", userLimit: 2, reason: "temporary channel for voice messages", bitrate: 96000 });
+module.exports.create = async(client, guild) => {
+    try {
+        result = await guild.channels.create(process.env.DEFAULT_VOICE_CHANNEL_NAME, {
+            type: "voice",
+            userLimit: 2,
+            reason: "channel for voice messages",
+            bitrate: 96000,
+            permissionOverwrites: [{
+                    id: client.user.id,
+                    allow: [Discord.Permissions.FLAGS.VIEW_CHANNEL,
+                        Discord.Permissions.FLAGS.SPEAK,
+                        Discord.Permissions.FLAGS.CONNECT
+                    ],
+                },
+                {
+                    id: guild.roles.everyone.id,
+                    allow: new Discord.Permissions([Discord.Permissions.FLAGS.VIEW_CHANNEL,
+                        Discord.Permissions.FLAGS.SPEAK,
+                        Discord.Permissions.FLAGS.CONNECT
+                    ])
+                },
+            ]
+        });
+    } catch (e) {
+        console.error(e);
+        result = null
+    };
     return result;
 };
 
