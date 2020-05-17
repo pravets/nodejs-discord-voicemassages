@@ -11,11 +11,11 @@ client.log = require('./functions/log.js');
 client.commands = new Discord.Collection();
 client.commands.set('ping', require('./commands/ping.js'));
 
-
 //events
 client.on('ready', () => require('./events/ready.js')(client));
 client.on('message', message => require('./events/message.js')(client, message));
 client.on('guildCreate', guild => require('./events/guildCreate.js')(client, guild));
+client.on('voiceStateUpdate', (oldState, newState) => require('./events/voiceStateUpdated.js')(client, oldState, newState));
 
 
 async function start() {
