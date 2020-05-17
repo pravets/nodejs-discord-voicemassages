@@ -1,4 +1,5 @@
-/recordings/*
+/recordings/*.mp3
+/recordings/*.pcm
 
 # Logs
 logs
