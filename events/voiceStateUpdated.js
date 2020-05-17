@@ -1,6 +1,8 @@
 const lame = require('@suldashi/lame');
 const fs = require('fs');
 
+const UserConfig = require('../models/UserConfig');
+
 module.exports = async(client, oldState, newState) => {
 
     const user = oldState.member.user;
@@ -67,9 +69,13 @@ module.exports = async(client, oldState, newState) => {
 
             pcmStream.pipe(encoder);
             encoder.pipe(outputStream)
-            outputStream.on('close', () => {
-                console.error('done!');
-                newState.member.send({ files: [filenameMP3] });
+            outputStream.on('close', async() => {
+                const userConfig = await UserConfig.findOne({ guild_id: guild.id, user_id: user.id });
+                if (userConfig) {
+                    await guild.channels.cache.get(userConfig.channel_id).send(`${user} say:`, { files: [filenameMP3] })
+                } else {
+                    newState.member.send({ files: [filenameMP3] });
+                }
                 client[`VoiceMessage${guild.id}`].outputStream.close();
                 client[`VoiceMessage${guild.id}`] = null;
             });

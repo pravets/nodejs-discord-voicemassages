@@ -9,7 +9,8 @@ client.log = require('./functions/log.js');
 
 //commands
 client.commands = new Discord.Collection();
-client.commands.set('ping', require('./commands/ping.js'));
+client.commands.set('ping', require('./commands/ping'));
+client.commands.set('rechere', require('./commands/rechere'));
 
 //events
 client.on('ready', () => require('./events/ready.js')(client));
