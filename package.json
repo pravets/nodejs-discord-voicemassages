@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/pravets/nodejs-discord-voicemassages#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
+    "@discordjs/opus": "^0.8.0",
     "@suldashi/lame": "^1.2.5",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
